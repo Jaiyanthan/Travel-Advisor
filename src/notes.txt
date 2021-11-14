@@ -1,0 +1,101 @@
+Date: 3/9/2021
+     What did i do?
+        Structured the folders,
+        Imported the packages,
+        Added the grid in the app.js,
+        Created the List ,Header ,Map ,Placedeatils components
+        Imported the List component in App.js and rendered it in the grid
+        Imported the Map component in App.js and rendered it in the grid
+        Completed the layout of the Header
+     
+     What did i do in Header?
+        Imported Autocomplete and other necessary packages from material ui and react-google-maps
+        Created the AppBar component inside of tat component called the Toolbar component 
+        Inside the Toolbar component we have the Heading text enclosed inside a Typography component
+        After the Typography component we have the Box component which we created to add the search bar.
+        The box component has a Typography which says the Search bar title.
+        And a Search Icon and a InputBase for the search.
+        Everything worked well, Will see in the next funtionality.
+
+
+Date: 4/9/2021
+     What did I do?
+         Went to cloud.google.com and enabled the google maps javascript api and generated the api key in 
+         the credentials page.
+         Imported the necessary components in the Map.jsx
+         Added the  GoogleMapReact which has 8 parameters
+         Map worked fine
+         Created the List component and added the InputLabel FromControl
+         Created upto the Grid card for the places 
+         Everything worked well, Will see in the next funtionality.
+Date: 5/9/2021
+      What did I do?
+           Went to rapid api and got the api keys
+           Created another folder in the src folder and created a index.js file in it.
+           Imported axios and pasted the general axios get Url functionality code.
+           Created three state variables , as follows:-
+                       *places ,setPlaces = empty array[]
+                       *coords ,setCoords = empty object{}
+                       *bounds ,setBounds = null
+           Here coords is the center coordinates of the map displayed
+           And the notheast and southwest boundaries of the map is the bounds as we are going to display 
+             the attractions only on the specified bounds.
+           Passed the coords ,setCoords ,and setBounds to the Map component as props.
+           Imported the cords ,setCoords and the setBounds in the Map component as props.
+           In the <GoogleMapReact></GoogleMapReact> component in the onChange property added a callback
+                function with e (event) as parameter and setCoords({lat : e.center.lat ,lng :e.center.lng})
+           And passed the imported coords to the center and default center property.
+           Still it won't work, so in the app.js create a useEffect and add the built in function:-
+
+              navigator.geolocation.getCurrentPosition(({coords:{latitude ,longitude}}) => {
+                 setCoords({lat:latitude ,lng:longitude})
+              })
+           Again in the App.js create another useEffect and call the getPlaceDetails() which is created in the
+             api folder's index.js
+           And set the places state variable to data inside the call back function .then(()=>{
+
+           })
+           This is what did today. Everything working well will see in the next functionality
+Date 6/9/2021
+       What did I do?
+       Created the Cards and displayed the places with name ,their images ,ranking and their rating.
+       Still can't solve the bug in the Place details by i can't show the rewards of the restaurant ,cuisine
+          and so on.
+Date 7/9/2021
+       What did I do?          
+       Just Debugging
+Date 8/9/2021
+       What did I do?
+       Nothing
+Date 9/9/2021
+       What did I do?
+       Added the Rating componenet and showed the rating of the place.
+       Displayed the place card on the map
+       Added the website button on the list card.
+Date 10/9/2021
+      What did I do?
+      Checked the childClicked functionality
+      And scrolled to that specific component in list using useEffect and react ref
+      In the useEffect created a const and stored the references into a constant.
+      And updated the State variable to the value of the constant.
+      In the list component where the Placedetail component is called, added two props i.e 
+                          selected={Number(childClicked) === i}
+                          refProp={elRefs[i]}
+      In the Placedetails component recieved the value as props and using if statement , and the we get an error 
+        saying "length is not defined"
+         This how to solve the error:-
+                      The error is because we did not tell the start component i.e we don't have the places at
+                       start.
+                     Here i where we use CircularProgress.
+                     In the App.js create a state variable isLoading and initiate it with false.
+                     And recieve the isLoading as props in the List and and use this logic:-
+                         {isLoading ? (
+               <div className={classes.loading}>
+                   <CircularProgress size="5rem"/>
+               </div>
+           ) : ( 
+               <>
+               </>
+           )}
+      Now we need to switch between Restaurants ,Hotels ,and Attractions.
+               

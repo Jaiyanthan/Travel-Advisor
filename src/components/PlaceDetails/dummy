@@ -1,0 +1,23 @@
+{/* 
+      <Card elevation={10}>
+         <CardMedia
+            style={{height:150}}
+            image={place.photo ? place.photo.images.large.url: 'https://upload.wikimedia.org/wikipedia/commons/3/35/SimpleRestaurantMinsk.jpg'}
+            title={place.name}
+         />
+         <CardContent>
+              <Typography gutterBottom variant="h5">{place.name}</Typography>
+             
+              {place?.awards?.map((award) => {
+                  <Box  display="flex" justifyContent="space-betwwen" my={1} alignItems="center">
+                      <img src={award.images.small} alt={award.display_name}/>
+                      <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
+                  </Box>
+              })}
+              {place?.cuisine?.map(({name})=>{
+                  <Chip key={name} size="small" label={name} className={classes.chip}/>
+              })}
+         </CardContent>
+      </Card>
+
+            */}
